@@ -38,3 +38,29 @@ This project is configured for automatic deployment to GitHub Pages using GitHub
 2. Under "Source", select "GitHub Actions"
 3. The workflow will automatically deploy on pushes to the `main` branch
 4. Your site will be published at `https://<your-github-username>.github.io/<repository-name>/`
+
+## Code Smells
+
+1. Long Function & Data Clumps:
+   Setup Function is incredibly long, should be reduced in size and allow other functions to take over its responsibilities.
+
+   Fix: Extract Function + Combine Functions into Class -> Logic is now modular (createUI, cacheElements, updateUI) to take on more tasks independently as well as give code better readability.
+
+2. Duplicated Code:
+   { ctr.innerHTML = `${c}`;
+   document.title = "Clicked " + c;
+   document.body.style.backgroundColor = c % 2 ? "pink" : "lightblue"; }
+
+   was repeated 3 times.
+
+   Fix: Extract Function -> updateUI() centralizes this code into one function that all event listeners can use.
+
+3. Global Data:
+   Code for the counter is a global
+
+   Fix: Encapsulate Variable -> count encapsulated within CounterApp class instead
+
+4. Magic Literal:
+   Constants given should instead be symbolic constants (or enumerators)
+
+   Fix: Replace Magic Literal with Symbolic Constant -> Centralized constants (IDS, COLORS, TITLE)
